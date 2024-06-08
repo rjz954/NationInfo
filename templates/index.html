@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Data</title>
+</head>
+<body>
+    <h1>Countries</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Capital City</th>
+            <th>Population</th>
+            <th>Area</th>
+            <th>GDP</th>
+            <th>GDP per Capita</th>
+            <th>Life Expectancy</th>
+            <th>Internet Usage</th>
+            <th>CO2 Emissions</th>
+            <th>Literacy Rate</th>
+        </tr>
+        {% for country in countries %}
+        <tr>
+            <td>{{ country.name }}</td>
+            <td>{{ country.capital_city }}</td>
+            <td>{{ country.population }}</td>
+            <td>{{ country.area }}</td>
+            <td>{{ country.gdp }}</td>
+            <td>{{ country.gdp_per_capita }}</td>
+            <td>{{ country.life_expectancy }}</td>
+            <td>{{ country.internet_usage }}</td>
+            <td>{{ country.co2_emissions }}</td>
+            <td>{{ country.literacy_rate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
