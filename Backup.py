@@ -1,6 +1,5 @@
 import os
 import csv
-import re
 from flask import Flask, render_template, request, redirect, url_for
 import psycopg2
 
@@ -15,9 +14,7 @@ country_name_map = {}
 with open(csv_file_path, mode='r', newline='', encoding='utf-8') as file:
     reader = csv.DictReader(file)
     for row in reader:
-        # Filter out unwanted characters using regular expressions
-        country_name = re.sub(r'[^a-zA-Z()\[\] ]', '', row['value'])
-        country_name_map[country_name] = int(row['id'])
+        country_name_map[row['value']] = int(row['id'])
 
 # Load unique series from the CSV file and sort alphabetically
 unique_series = []
@@ -73,6 +70,17 @@ def search_by_info(country_id, series):
     countries = cur.fetchall()
     conn.close()
     return render_template('search_results_info.html', countries=countries)
+
+
+def render_value_search_results(countries):
+    # Extracting the required variables
+    value_search_results = [[row[1], row[2], row[3], row[4], row[5]] for row in countries]
+    return render_template('search_results_value.html', countries=value_search_results)
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
