@@ -48,6 +48,6 @@ cur.execute("GRANT ALL PRIVILEGES ON DATABASE countrydata TO country_user;")
 
 cur.execute("ALTER DATABASE countrydata OWNER TO country_user;")
 
-# Close cursor and connection
+
 cur.close()
 conn.close()
