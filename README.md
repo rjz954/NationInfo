@@ -12,14 +12,16 @@ To run the application, execute the following command in your terminal:
 
 ```bash
 python run.py
+```
 
 If the above command does not work, you can run each script manually in the following order:
+```bash
 python csvmerger.py
 python csvcountrylist.py
 python init.py
 python load_data.py
 python app.py
-
+```
 Finally, enter the site:
 http://127.0.0.1:5000
 
