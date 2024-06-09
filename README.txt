@@ -4,6 +4,7 @@ At the very top, it should say username="postgres" and password="postgres". Plea
 
 After that is done, run the following commands:
 python csvmerger.py
+python series.py
 python csvcountrylist.py
 python init.py
 python load_data.py
