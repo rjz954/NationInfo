@@ -1,3 +1,4 @@
+<!-- templates/search_form.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,30 @@
     <title>Search Form</title>
 </head>
 <body>
-    <h1>Search for Country</h1>
-    <form action="/search" method="post">
-        <label for="country_name">Enter country name:</label>
-        <input type="text" id="country_name" name="country_name">
-        <br>
-        <label for="search_type">Select search type:</label>
+    <h1>Search for Country Data</h1>
+    <form method="POST" action="/search">
+        <label for="country_name">Select Country:</label>
+        <select id="country_name" name="country_name">
+            <option value="">-- Select Country --</option>
+            {% for country in countries %}
+            <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="series">Select Series:</label>
+        <select id="series" name="series">
+            <option value="">-- Select Series --</option>
+            {% for series in unique_series %}
+            <option value="{{ series }}">{{ series }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="search_type">Search Type:</label>
         <select id="search_type" name="search_type">
             <option value="info">Info</option>
             <option value="value">Value</option>
         </select>
-        <br>
+
         <button type="submit">Search</button>
     </form>
 </body>
