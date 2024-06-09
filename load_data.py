@@ -2,14 +2,14 @@ import pandas as pd
 import os
 import psycopg2
 
-# Database connection parameters
+
 dbname = "countrydata"
 user = "country_user"
 password = "password"
 host = "localhost"
 port = "5432"
 
-# SQL statement to create the table
+
 create_table_query = """
 CREATE TABLE IF NOT EXISTS Countries (
     id INT,
@@ -35,19 +35,18 @@ CREATE TABLE IF NOT EXISTS Countries (
 );
 """
 
-# Connect to the PostgreSQL database
+
 conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 cur = conn.cursor()
 
-# Execute the SQL statement to create the table
+
 cur.execute(create_table_query)
 conn.commit()
 
-# Read the CSV file into a DataFrame
 csv_file_path = os.path.join('dataset', 'merged_data.csv')
 data = pd.read_csv(csv_file_path)
 
-# Define the insert query
+
 insert_query = """
 INSERT INTO Countries (
     id, Unnamed_1, Year, Series, Capital_City, Capital_City_footnote,
@@ -60,14 +59,12 @@ INSERT INTO Countries (
 )
 """
 
-# Iterate over the DataFrame and insert data into the database
+
 for _, row in data.iterrows():
     cur.execute(insert_query, tuple(row))
 
-# Commit the transaction
-conn.commit()
 
-# Close communication with the database
+conn.commit()
 cur.close()
 conn.close()
 
