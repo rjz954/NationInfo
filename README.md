@@ -18,6 +18,7 @@ If the above command does not work, you can run each script manually in the foll
 ```bash
 python csvmerger.py
 python csvcountrylist.py
+python series.py
 python init.py
 python load_data.py
 python app.py
