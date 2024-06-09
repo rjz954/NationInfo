@@ -1,5 +1,5 @@
 username = "postgres"
-user_password = "new_password"
+user_password = "postgres"
 
 
 
